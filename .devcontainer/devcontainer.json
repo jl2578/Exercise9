@@ -1,17 +1,25 @@
 {
   "name": "Exercise9",
-  "image": "mcr.microsoft.com/devcontainers/python:3.10",
+  "image": "mcr.microsoft.com/devcontainers/python:3.11-bullseye",
   "features": {
-    "ghcr.io/devcontainers/features/github-copilot:0": {}
+    "ghcr.io/devcontainers/features/common-utils:2": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {}
   },
   "customizations": {
     "vscode": {
       "extensions": [
         "ms-python.python",
         "ms-toolsai.jupyter",
-        "github.copilot"
-      ]
+        "GitHub.copilot"
+      ],
+      "settings": {
+        "python.defaultInterpreterPath": "/usr/local/bin/python",
+        "jupyter.notebookFileRoot": "${workspaceFolder}",
+        "python.analysis.indexing": true
+      }
     }
   },
-  "postCreateCommand": "pip install --no-cache-dir -r requirements.txt"
+  "remoteUser": "vscode",
+  "updateRemoteUserUID": "never",
+  "postCreateCommand": "python -m pip install --upgrade pip && python -m pip install -r requirements.txt"
 }
